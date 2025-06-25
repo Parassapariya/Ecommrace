@@ -30,6 +30,8 @@ const signup = async (req, res) => {
     // Generate token after saving user
     const token = generateToken (user);
 
+    console.log("Generated Token:", token);
+
     user.token = token;
     
     // Save user to DB
