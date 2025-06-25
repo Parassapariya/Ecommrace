@@ -10,7 +10,7 @@ const bodyParser = require("body-parser");
 
 const userRoutes = require("./src/routes/userRoutes");
 const productRoute = require("./src/routes/productRoutes");
-
+const cartRoute = require ('./src/routes/cartRoutes');
 
 // Middleware
 app.use(cors());
@@ -27,6 +27,7 @@ app.get("/",(req,res)=>{
 // Routes
 app.use("/api/users", userRoutes);
 app.use("/api/product", productRoute);
+app.use('/api/cart', cartRoute);
 
 // Start server
 app.listen(port, () => {
