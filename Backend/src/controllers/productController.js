@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 const product = async (req, res) => {
     try {
         const products = await Product.find({});
-
+        console.log(products);
         //return
         return res.status(200).json({
             message: 'All Product',
