@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const app = express();
 
 const cartSchema = new mongoose.Schema({
-    //arrey of product with quntity
+    //arrey of product with quntity and price
+
     products: [
         {
             productId: {
@@ -12,9 +13,16 @@ const cartSchema = new mongoose.Schema({
             },
             quantity: {
                 type: Number
+            },
+            price: {
+                type: Number
             }
         }
     ],
+    //total
+    total: {
+        type: Number
+    },
 
 
     user: {

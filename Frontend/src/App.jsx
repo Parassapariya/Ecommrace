@@ -1,36 +1,34 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import axios from 'axios'
-
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function App() {
-  const [getproduct, setproduct] = useState([])
+  const [products, setProducts] = useState([]);
+
 
   useEffect(() => {
     axios.get('/api/product/AllProduct')
-      .then(res =>
-        setproduct(res.data)
-      )
-      .catch(err =>
-        console.log(err)
-      )
-    setproduct(products)
-  }, []) // empty dependency to run once on mount
+      .then(res => {
+        console.log("Response from API:", res.data);
+        setProducts(res.data.product);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }, []);
+
 
   return (
-    <>
-      <h1>Display Product</h1>
-      {
-        getproduct.map((product) => (
-          // Use parentheses to implicitly return JSX here
-          <div key={product.id}>
-            <h3>{product.name}</h3>
-            <p>{product.description}</p>
-          </div>
-        ))
-      }
-    </>
-  )
+    <div>
+      <h1>Product List</h1>
+      {Array.isArray(products) && products.map(product => (
+        <div key={product.id || product._id}>
+          <h2>{product.name}</h2>
+          <p>{product.price}</p>
+        </div>
+      ))}
+
+    </div>
+  );
 }
 
-export default App
+export default App;
