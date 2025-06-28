@@ -2,11 +2,10 @@
 const express = require ('express');
 const router = express.Router ();
 const verifyToken = require('../middlewares/authMiddleware');
-const { PaymentGetway } = require('../controllers/paymentController');
+const { createPaymentSession } = require('../controllers/paymentController');
 
 //All product router
-router.get('/Payment', PaymentGetway);
-
+router.post('/create-session', verifyToken, createPaymentSession);
 
 //export
 module.exports = router;

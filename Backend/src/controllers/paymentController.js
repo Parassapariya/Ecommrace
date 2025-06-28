@@ -32,7 +32,7 @@ const createPaymentSession = async (req, res) => {
 
       lineItems.push({
         price_data: {
-          currency: 'usd',  // change if needed
+          currency: 'usd',  
           product_data: {
             name: product.name,
             description: product.description || '',

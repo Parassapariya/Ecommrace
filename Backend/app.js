@@ -11,6 +11,7 @@ const bodyParser = require("body-parser");
 const userRoutes = require("./src/routes/userRoutes");
 const productRoute = require("./src/routes/productRoutes");
 const cartRoute = require ('./src/routes/cartRoutes');
+const paymentRoute = require ('./src/routes/paymentRoute');
 
 // Middleware
 app.use(cors());
@@ -21,13 +22,14 @@ app.use(express.json());
 
 //defult frontend route
 app.get("/",(req,res)=>{
-  res.send("Hello Project");
+  res.send("Success");
 })
 
 // Routes
 app.use("/api/users", userRoutes);
 app.use("/api/product", productRoute);
 app.use('/api/cart', cartRoute);
+app.use('/api/payment', paymentRoute);
 
 // Start server
 app.listen(port, () => {
