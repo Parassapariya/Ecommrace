@@ -5,6 +5,7 @@ const Product = require('../model/Product');
 const jwt = require('jsonwebtoken');
 const Cart = require('../model/Cart');
 
+
 //add to cart
 const addProductToCart = async (req, res) => {
   try {
